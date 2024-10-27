@@ -104,7 +104,7 @@ export default function SignUp() {
           </form>
         </CardContent>
         <CardFooter className="flex justify-between">
-          <Button variant="outline" onClick={() => router.push("/signin")}>
+          <Button variant="outline" onClick={() => router.push("/sign-in")}>
             Cancel
           </Button>
           <Button onClick={handleSubmit}>Sign Up</Button>

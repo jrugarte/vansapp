@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Notifications() {
   return (
-    <Card className="bg-gray-900 border-gray-800 text-emerald-100 w-screen mx-4 md:w-1/2">
+    <Card className="bg-gray-900 border-gray-800 text-emerald-100 w-full">
       <CardHeader>
         <CardTitle>Notificaciones</CardTitle>
       </CardHeader>

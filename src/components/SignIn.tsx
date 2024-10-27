@@ -15,12 +15,14 @@ import {
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
+import { Loader2 } from "lucide-react";
 
 export default function SignIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,14 +35,18 @@ export default function SignIn() {
     });
 
     if (result?.error) {
-      setError("Invalid username or password");
+      setIsLoading(true);
+      setTimeout(() => {
+        setError("Invalid username or password");
+        setIsLoading(false);
+      }, 1000);
     } else {
       router.push("/");
     }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
+    <div className="flex flex-col items-center justify-center min-h-screen w-full">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
           <CardTitle className="text-3xl font-bold text-center mb-4">
@@ -80,8 +86,19 @@ export default function SignIn() {
           </form>
         </CardContent>
         <CardFooter className="flex justify-between">
-          <Button onClick={handleSubmit} className="w-full">
-            Iniciar Sesión
+          <Button
+            onClick={handleSubmit}
+            disabled={isLoading}
+            className="w-full"
+          >
+            {isLoading ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Iniciando sesión...
+              </>
+            ) : (
+              "Iniciar sesión"
+            )}
           </Button>
         </CardFooter>
         <p className="text-center text-sm text-gray-700 mb-4">

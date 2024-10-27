@@ -132,7 +132,7 @@ export default function WeeklyAttendance() {
   };
 
   return (
-    <Card className="bg-gray-900 border-gray-800 text-emerald-100 w-screen mx-4 md:w-1/2">
+    <Card className="bg-gray-900 border-gray-800 text-emerald-100">
       <CardHeader>
         <CardTitle className="text-lg">Asistencia semanal</CardTitle>
       </CardHeader>
